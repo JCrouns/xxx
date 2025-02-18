@@ -1,0 +1,68 @@
+#include "so_long.h"
+
+
+int main(int c , char **v) {
+    int rows = 0;
+    int cols = 0;
+    char **map;
+    if(c != 2)
+        write(2 ,"Number of args are not on point\n",30);
+    int fd = open(v[1], O_RDONLY);
+    if (fd < 0)
+    {
+        perror("ERROR opening file");
+        return EXIT_FAILURE;
+    }
+
+    char *line = NULL;
+    while ((line = get_next_line(fd)) != NULL)
+    {
+        rows++;
+        if (cols == 0)
+        {
+            cols = strlen(line) - 1;
+        }
+
+    printf("%s" ,line);
+        free(line);
+    }
+    close(fd);
+    fd = open(v[1], O_RDONLY);
+
+    if (fd < 0)
+    {
+        perror("ERROR reopening file");
+        return EXIT_FAILURE;
+    }
+
+    map = (char **)malloc(sizeof(char *) * rows);
+    if (!map)
+    {
+        perror("Error allocating memory for map");
+        close(fd);
+        return EXIT_FAILURE;
+    }
+
+    int r = 0;
+    while ((line = get_next_line(fd)) != NULL)
+    {
+        map[r] = (char *)malloc(sizeof(char) * (cols + 1));
+        if (!map[r])
+        {
+            perror("Error allocating memory for map row");
+            close(fd);
+            return EXIT_FAILURE;
+        }
+        strncpy(map[r], line, cols);
+        map[r][cols] = '\0';
+        free(line);
+        r++;
+    }
+
+    close(fd);
+
+    map_check_wall(map, rows, cols);
+    map_check_player(map , rows , cols);
+    map_check_collectables(map , rows , cols);
+    ghayermarghoub_fiha(map, rows, cols);
+}
