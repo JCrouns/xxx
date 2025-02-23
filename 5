@@ -1,43 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_player_position.c                             :+:      :+:    :+:   */
+/*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jait-chd <jait-chd@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/16 18:17:51 by jait-chd          #+#    #+#             */
-/*   Updated: 2025/02/23 14:01:26 by jait-chd         ###   ########.fr       */
+/*   Created: 2025/02/16 18:18:02 by jait-chd          #+#    #+#             */
+/*   Updated: 2025/02/20 20:22:47 by jait-chd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-int player_row = -1;
-int player_col = -1;
+
 int collected_items = 0;
-int total_collectables =0;
-
-void find_player_position(char **tab, int rows, int cols)
-{
-    int r = 0;
-    while (r < rows)
-    {
-        int c = 0;
-        while (c < cols)
-        {
-            if (tab[r][c] == PLAYER)
-            {
-                player_row = r;
-                player_col = c;
-                return;
-            }
-            c++;
-        }
-        r++;
-    }
-    player_row = -1;
-   player_col = -1;
-}
-
+int player_row = 0;
+int player_col = 0;
 int move_player(char **tab, int rows, int cols, char direction)
 {
     find_player_position(tab, rows, cols);

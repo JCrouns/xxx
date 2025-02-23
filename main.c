@@ -27,7 +27,6 @@ void print_map(char **tab, int rows, int cols)
 }
 
 
-
 int main(int c, char **v) {
     char **map;
     int cols = 0;
@@ -65,12 +64,9 @@ int main(int c, char **v) {
     }
     close(fd);
     process_map(map , rows, cols);
-    printf("Map checked it is too good except exit ");
-   int roo = find_player_row(map , rows , cols);
-   int coo = find_player_col(map, rows, cols);
-   // move_player(map , rows , cols , );
-    mlx_stuff(map, rows, cols, roo, coo);
-       print_map(map , rows ,cols);
+    printf("Map checked it is too good except exit\n");
+    find_player_position(map, rows, cols);
+    mlx_stuff(map, rows, cols);
     return 0;
 }
 

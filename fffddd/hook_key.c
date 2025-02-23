@@ -6,7 +6,7 @@
 /*   By: jait-chd <jait-chd@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 18:18:49 by jait-chd          #+#    #+#             */
-/*   Updated: 2025/02/23 13:24:09 by jait-chd         ###   ########.fr       */
+/*   Updated: 2025/02/23 13:56:07 by jait-chd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int key_hook(int keycode, void *param)
         int move_result = move_player(map, rows, cols, direction);
         if (move_result == 1) {
             printf("Player moved!\n");
-            print_map(map, rows, cols);
+  //          print_map(map, rows, cols);
             mlx_clear_window(mlx, mlx_win);
-//            draw_map(mlx, mlx_win, map, rows, cols);
+            draw_map(mlx, mlx_win, map, rows, cols);
         } else {
             printf("Invalid move\n");
         }

@@ -6,7 +6,7 @@
 /*   By: jait-chd <jait-chd@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 18:17:51 by jait-chd          #+#    #+#             */
-/*   Updated: 2025/02/23 14:01:26 by jait-chd         ###   ########.fr       */
+/*   Updated: 2025/02/23 13:23:31 by jait-chd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void find_player_position(char **tab, int rows, int cols)
         }
         r++;
     }
-    player_row = -1;
-   player_col = -1;
+//    player_row = -1;
+  // player_col = -1;
 }
 
 int move_player(char **tab, int rows, int cols, char direction)
